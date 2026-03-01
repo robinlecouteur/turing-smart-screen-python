@@ -360,7 +360,7 @@ class LcdComm(ABC):
         if bar_filled_width < 0:
             bar_filled_width = 0
         draw = ImageDraw.Draw(bar_image)
-        draw.rectangle([0, 0, bar_filled_width, height - 1], fill=bar_color, outline=bar_color)
+        draw.rectangle([0, 0, bar_filled_width, height - 1], fill=bar_color)
 
         if bar_outline:
             # Draw outline

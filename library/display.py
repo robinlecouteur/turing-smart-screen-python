@@ -24,6 +24,7 @@ from library.lcd.lcd_comm_rev_a import LcdCommRevA
 from library.lcd.lcd_comm_rev_b import LcdCommRevB
 from library.lcd.lcd_comm_rev_c import LcdCommRevC
 from library.lcd.lcd_comm_rev_d import LcdCommRevD
+from library.lcd.lcd_comm_rev_ds import LcdCommRevDS
 from library.lcd.lcd_comm_weact_a import LcdCommWeActA
 from library.lcd.lcd_comm_weact_b import LcdCommWeActB
 from library.lcd.lcd_simulated import LcdSimulated
@@ -94,6 +95,10 @@ class Display:
         elif config.CONFIG_DATA["display"]["REVISION"] == "WEACT_B":
             self.lcd = LcdCommWeActB(com_port=config.CONFIG_DATA['config']['COM_PORT'],
                                    update_queue=config.update_queue)
+        elif config.CONFIG_DATA["display"]["REVISION"] == "DS":
+            self.lcd = LcdCommRevDS(com_port=config.CONFIG_DATA['config']['COM_PORT'],
+                                    update_queue=config.update_queue)
+            self.lcd.on_reconnect = self._on_ds_reconnect
         elif config.CONFIG_DATA["display"]["REVISION"] == "SIMU":
             # Simulated display: always set width/height from theme
             self.lcd = LcdSimulated(display_width=width, display_height=height)
@@ -133,6 +138,22 @@ class Display:
 
         # Turn off backplate RGB LED
         self.lcd.SetBackplateLedColor(led_color=(0, 0, 0))
+
+    def _on_ds_reconnect(self):
+        """Called by LcdCommRevDS after a successful reconnect. Redraws the
+        full background image and all static text so the DS screen is restored
+        to the theme base state before dynamic stats start updating again."""
+        logger.info("DS reconnected: redrawing background and static content")
+        # Push the full background PNG as a single bitmap covering the display,
+        # then layer the static labels on top.  Dynamic stat widgets will
+        # repaint themselves on their next scheduled interval.
+        background_path = config.THEME_DATA.get('PATH', '') + 'background.png'
+        try:
+            self.lcd.DisplayBitmap(bitmap_path=background_path, x=0, y=0)
+        except Exception as e:
+            logger.warning(f"DS reconnect: could not redraw background: {e}")
+        self.display_static_images()
+        self.display_static_text()
 
     def display_static_images(self):
         if config.THEME_DATA.get('static_images', False):

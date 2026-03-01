@@ -1,0 +1,300 @@
+---
+# Nintendo DS Lite display theme
+# Display: 256 x 384  (top 256x192  +  bottom 256x192)
+# DISPLAY_SIZE is intentionally omitted: the DS driver always uses 256x384.
+
+display:
+  DISPLAY_ORIENTATION: portrait
+
+static_images:
+  BACKGROUND:
+    PATH: background.png
+    X: 0
+    Y: 0
+    WIDTH: 256
+    HEIGHT: 384
+
+static_text:
+  # ---- Top screen labels ----
+  CPU_LABEL:
+    TEXT: "CPU"
+    X: 4
+    Y: 2
+    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+    FONT_SIZE: 16
+    FONT_COLOR: 0, 60, 160
+    BACKGROUND_IMAGE: background.png
+  GPU_LABEL:
+    TEXT: "GPU"
+    X: 4
+    Y: 67
+    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+    FONT_SIZE: 16
+    FONT_COLOR: 0, 60, 160
+    BACKGROUND_IMAGE: background.png
+  MEM_LABEL:
+    TEXT: "RAM"
+    X: 4
+    Y: 132
+    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+    FONT_SIZE: 16
+    FONT_COLOR: 0, 60, 160
+    BACKGROUND_IMAGE: background.png
+  # ---- Bottom screen labels ----
+  DISK_LABEL:
+    TEXT: "DISK"
+    X: 4
+    Y: 196
+    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+    FONT_SIZE: 16
+    FONT_COLOR: 80, 0, 160
+    BACKGROUND_IMAGE: background.png
+  NET_LABEL:
+    TEXT: "NET"
+    X: 4
+    Y: 261
+    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+    FONT_SIZE: 16
+    FONT_COLOR: 80, 0, 160
+    BACKGROUND_IMAGE: background.png
+  DATE_LABEL:
+    TEXT: "TIME"
+    X: 4
+    Y: 326
+    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+    FONT_SIZE: 16
+    FONT_COLOR: 0, 120, 60
+    BACKGROUND_IMAGE: background.png
+
+STATS:
+  CPU:
+    PERCENTAGE:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 170
+        Y: 17
+        WIDTH: 82
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 20, 20, 20
+        BACKGROUND_IMAGE: background.png
+      GRAPH:
+        SHOW: True
+        X: 4
+        Y: 42
+        WIDTH: 248
+        HEIGHT: 12
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        BAR_COLOR: 0, 80, 200
+        BAR_OUTLINE: False
+        BACKGROUND_IMAGE: background.png
+    FREQUENCY:
+      INTERVAL: 5
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 4
+        Y: 17
+        WIDTH: 92
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 0, 80, 180
+        BACKGROUND_IMAGE: background.png
+    TEMPERATURE:
+      INTERVAL: 5
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 100
+        Y: 17
+        WIDTH: 66
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 160, 80, 0
+        BACKGROUND_IMAGE: background.png
+
+  GPU:
+    INTERVAL: 1
+    PERCENTAGE:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 170
+        Y: 82
+        WIDTH: 82
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 20, 20, 20
+        BACKGROUND_IMAGE: background.png
+      GRAPH:
+        SHOW: True
+        X: 4
+        Y: 107
+        WIDTH: 248
+        HEIGHT: 12
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        BAR_COLOR: 0, 150, 60
+        BAR_OUTLINE: False
+        BACKGROUND_IMAGE: background.png
+    TEMPERATURE:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 100
+        Y: 82
+        WIDTH: 66
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 160, 80, 0
+        BACKGROUND_IMAGE: background.png
+    MEMORY:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 4
+        Y: 82
+        WIDTH: 92
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 0, 130, 0
+        BACKGROUND_IMAGE: background.png
+
+  MEMORY:
+    INTERVAL: 5
+    VIRTUAL:
+      GRAPH:
+        SHOW: True
+        X: 4
+        Y: 172
+        WIDTH: 248
+        HEIGHT: 12
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        BAR_COLOR: 120, 0, 200
+        BAR_OUTLINE: False
+        BACKGROUND_IMAGE: background.png
+      USED:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 4
+        Y: 147
+        WIDTH: 162
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 100, 0, 180
+        BACKGROUND_IMAGE: background.png
+      PERCENT_TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 170
+        Y: 147
+        WIDTH: 82
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 20, 20, 20
+        BACKGROUND_IMAGE: background.png
+
+  DISK:
+    INTERVAL: 10
+    USED:
+      GRAPH:
+        SHOW: True
+        X: 4
+        Y: 233
+        WIDTH: 248
+        HEIGHT: 12
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        BAR_COLOR: 180, 80, 0
+        BAR_OUTLINE: False
+        BACKGROUND_IMAGE: background.png
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 4
+        Y: 212
+        WIDTH: 122
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 160, 80, 0
+        BACKGROUND_IMAGE: background.png
+    FREE:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 130
+        Y: 212
+        WIDTH: 122
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 0, 60, 160
+        BACKGROUND_IMAGE: background.png
+
+  NET:
+    INTERVAL: 2
+    UPLOAD:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 4
+        Y: 277
+        WIDTH: 248
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 0, 100, 180
+        BACKGROUND_IMAGE: background.png
+    DOWNLOAD:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 4
+        Y: 298
+        WIDTH: 248
+        HEIGHT: 24
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 20
+        FONT_COLOR: 160, 60, 0
+        BACKGROUND_IMAGE: background.png
+
+  DATE:
+    INTERVAL: 1
+    DAY:
+      TEXT:
+        SHOW: True
+        X: 4
+        Y: 342
+        WIDTH: 248
+        HEIGHT: 20
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 16
+        FONT_COLOR: 0, 120, 60
+        BACKGROUND_IMAGE: background.png
+        ANCHOR: lm
+    HOUR:
+      TEXT:
+        SHOW: True
+        X: 4
+        Y: 362
+        WIDTH: 248
+        HEIGHT: 22
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 18
+        FONT_COLOR: 100, 100, 0
+        BACKGROUND_IMAGE: background.png
+        ANCHOR: lm
+        FORMAT: "HH:mm:ss"
